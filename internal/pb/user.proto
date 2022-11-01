@@ -1,0 +1,43 @@
+syntax = "proto3";
+package pb;
+option go_package=".;pb";
+
+
+service UserService {
+  rpc Users(Temp) returns (GetUsers) {}
+  rpc SignUp(User) returns (Temp) {}
+  rpc Login(LoginData) returns (LoginStatus) {}
+  rpc Delete(DeleteData) returns (DeleteStatus) {}
+}
+
+message Temp {
+}
+
+message GetUsers {
+  string users = 1;
+}
+
+message User {
+  string userName = 1;
+  string email = 2;
+  string mobileNo =3;
+  string password = 4;
+  string birthDate = 5;
+}
+
+message LoginData {
+  string userName = 1;
+  string password = 2;
+}
+
+message DeleteData {
+  string username = 1;
+}
+
+message LoginStatus {
+  string message = 1;
+}
+
+message DeleteStatus {
+  string message = 1;
+}
